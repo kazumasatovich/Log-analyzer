@@ -1,6 +1,5 @@
 import argparse
 from pathlib import Path
-from .exceptions import LogParseException
 
 
 def build_parser() -> argparse.ArgumentParser:
