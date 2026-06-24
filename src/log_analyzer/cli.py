@@ -1,6 +1,5 @@
 import argparse
 from pathlib import Path
-from .exceptions import LogParseException
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -13,7 +12,7 @@ def build_parser() -> argparse.ArgumentParser:
         "--top", type=int, default=10, help="Сколько топовых записей показать?"
     )
     parser.add_argument("--format",
-                        choices=["text", "json"],
+                        choices=["txt", "json"],
                         default= "txt",
                         help="Формат вывода отчета",
     )
