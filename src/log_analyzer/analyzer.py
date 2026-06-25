@@ -1,7 +1,7 @@
 from collections import Counter
 from dataclasses import dataclass
 
-from models import LogEntry
+from log_analyzer.models import LogEntry
 
 
 @dataclass

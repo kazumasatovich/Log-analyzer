@@ -6,3 +6,18 @@ select = ["E", "F", "W", "I", "UP", "B", "SIM", "N"]
 
 [tool.mypy]
 disallow_untyped_defs = true
+
+[project]
+name = "log-analyzer"
+version = "0.1.0"
+requires-python = ">=3.12"
+
+[project.scripts]
+log-analyzer = "log_analyzer.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"

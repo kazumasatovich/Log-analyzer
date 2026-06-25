@@ -1,11 +1,11 @@
 import argparse
 from pathlib import Path
 
-from analyzer import analyze
-from exceptions import LogParseException
-from models import LogEntry
-from parser import parse_line
-from report import format_report
+from log_analyzer.analyzer import analyze
+from log_analyzer.exceptions import LogParseException
+from log_analyzer.models import LogEntry
+from log_analyzer.parser import parse_line
+from log_analyzer.report import format_report
 
 
 def build_parser() -> argparse.ArgumentParser:

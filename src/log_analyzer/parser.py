@@ -1,9 +1,9 @@
 import datetime as dt
 import re
 
-from models import LogEntry
+from log_analyzer.models import LogEntry
 
-from exceptions import LogParseException
+from log_analyzer.exceptions import LogParseException
 
 LOG_PATTERN = re.compile(
     r'(?P<ip>\S+) \S+ \S+ \[(?P<timestamp>[^\]]+)\] '
