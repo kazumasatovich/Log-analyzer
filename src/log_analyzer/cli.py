@@ -1,10 +1,11 @@
 import argparse
 from pathlib import Path
 
+from analyzer import analyze
 from exceptions import LogParseException
 from models import LogEntry
 from parser import parse_line
-from analyzer import AnalysisResult, analyze
+from report import format_report
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -32,7 +33,7 @@ def main() -> None:
     if not args.log_file.exists():
         parser.error(f"Файл не найден: {args.log_file}")
 
-    print(f"Анализ файла {args.log_file}, top={args.top}, format={args.format}")
+    print(f"Анализ файла {args.log_file}, top={args.top}, format={args.format}\n")
     failed_counts = 0
     entries: list[LogEntry] = []
     lines_count = 0
@@ -49,12 +50,17 @@ def main() -> None:
                 entries.append(entry)
             except LogParseException:
                 failed_counts += 1
-    print(f'Count of read lines: {lines_count}\n'
-          f'Success in {lines_count - skipped_count - failed_counts} lines\n'
-          f'Fail in {failed_counts} lines\n'
-          f'skipped: {skipped_count} empty lines')
+    print(f'Прочитанных строк: {lines_count}\n'
+          f'Успешно считано: {lines_count - skipped_count - failed_counts} строк\n'
+          f'Не удалось прочитать: {failed_counts} строк\n'
+          f'Пропущено: {skipped_count} пустых строк'
+          f'\n')
     result = analyze(entries, args.top)
-    print(result)
-
+    report_text = format_report(result, args.format)
+    if args.output is not None:
+        args.output.write_text(report_text, encoding="utf-8")
+        print(f"Отчёт сохранен в {args.output}")
+    else:
+        print(report_text)
 if __name__ == "__main__":
     main()

@@ -19,7 +19,7 @@ def parse_line(line: str) -> LogEntry:
     try:
        time_stamp= dt.datetime.strptime(log['timestamp'], "%d/%b/%Y:%H:%M:%S %z")
     except ValueError as e:
-        raise LogParseException(f'Incorrect format of date in {line}') from e
+        raise LogParseException(f'Неверная форма даты в {line}') from e
     log_entry= LogEntry(
         ip= log['ip'],
         timestamp= time_stamp,
