@@ -4,6 +4,7 @@ from pathlib import Path
 from exceptions import LogParseException
 from models import LogEntry
 from parser import parse_line
+from analyzer import AnalysisResult, analyze
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -52,6 +53,8 @@ def main() -> None:
           f'Success in {lines_count - skipped_count - failed_counts} lines\n'
           f'Fail in {failed_counts} lines\n'
           f'skipped: {skipped_count} empty lines')
+    result = analyze(entries, args.top)
+    print(result)
 
 if __name__ == "__main__":
     main()
