@@ -30,16 +30,3 @@ def parse_line(line: str) -> LogEntry:
     )
 
     return log_entry
-
-if __name__ == '__main__':
-    test_cases= [
-        ('192.168.1.10 - - [10Oct/2023:13:55:36 +0000] '
-        '"GET /index.html HTTP/1.1" 200 2326 "-" "Mozilla/5.0"', "Битая"),
-        ('192.168.1.10 - - [10/Oct/2023:13:55:36 +0000] '
-        '"GET /index.html HTTP/1.1" 200 2326 "-" "Mozilla/5.0"', "Целая")
-    ]
-    for line, label in test_cases:
-        try:
-            print(f"{label}: {parse_line(line)}")
-        except LogParseException as e:
-            print(f"{label}: поймано исключение - {e}")

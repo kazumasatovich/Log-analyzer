@@ -1,2 +1,2 @@
 class LogParseException(Exception):
-    "Ошибка парсинга логов"
+    """Error in logs parse"""
