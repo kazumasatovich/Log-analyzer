@@ -16,7 +16,7 @@ pip install -e .
 ## Запуск
 
 ```bash
-log-analyzer <путь-к-логу> --top 10 --format text
+log-analyzer <путь-к-логу> --top 10 --format text/json --output <путь-к-файлу-вывода>
 ```
 
 ## Архитектура проекта
